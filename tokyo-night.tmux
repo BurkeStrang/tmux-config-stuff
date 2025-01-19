@@ -41,23 +41,22 @@ zoom_id_style="${zoom_id_style:-$default_zoom_id_style}"
 
 window_number="#($SCRIPTS_PATH/custom-number.sh #I $window_id_style)"
 custom_pane="#($SCRIPTS_PATH/custom-number.sh #P $pane_id_style)"
-cpu_memory_status="#(bash $SCRIPTS_PATH/cpu-memory.sh)"
-
-# echo "DEBUG: SCRIPTS_PATH=$cpu_memory_status" >/tmp/tmux_script_debug.log
+cpu_status="#(bash $SCRIPTS_PATH/cpu.sh)"
+memory_status="#(bash $SCRIPTS_PATH/memory.sh)"
 
 # Half-diamond style glyphs (requires Powerline/Nerd Font)
-LEFT_HALF_DIAMOND="#[bg=default,none,dim,fg=#111111]"
-RIGHT_HALF_DIAMOND="#[bg=default,none,dim,fg=#111111]"
+LEFT_HALF_DIAMOND="#[bg=default,none,dim,fg=#0A0A0A]"
+RIGHT_HALF_DIAMOND="#[bg=default,none,dim,fg=#0A0A0A]"
 
 #+--- Bars LEFT ---+
-tmux set -g status-left "$LEFT_HALF_DIAMOND#[fg=#225500,bg=#111111] #{?client_prefix,󰠠 ,#[dim]󰤂 }#[fg=#225500,bg=#111111,nodim]#S $RESET"
+tmux set -g status-left "$LEFT_HALF_DIAMOND#[fg=##4B4F53,bg=#0A0A0A] #{?client_prefix,󰠠 ,#[dim]󰤂 }#[fg=##4B4F53,bg=#0A0A0A,nodim]#S $RESET"
 
 #+--- Windows ---+
 # Focused window
-tmux set -g window-status-current-format "#[fg=#225500,bg=#111111] #[fg=#225500]$window_number #[nodim]#W#[nobold,dim]#{?window_zoomed_flag, $zoom_number, $custom_pane} #{?window_last_flag,,}$RIGHT_HALF_DIAMOND"
+tmux set -g window-status-current-format "#[fg=#225555,bg=#0A0A0A] #[fg=#225555]$window_number #[nodim]#W#[nobold,dim]#{?window_zoomed_flag, $zoom_number, $custom_pane} #{?window_last_flag,,}$RIGHT_HALF_DIAMOND"
 # Unfocused window
 tmux set -g window-status-format "#[fg=#225555,bg=default,none,dim] $window_number #W#[nobold,dim]#{?window_zoomed_flag, $zoom_number, $custom_pane}#[fg=#225555] #{?window_last_flag,󰁯 ,} "
 
 #+--- Bars RIGHT ---+
 tmux set -g status-interval 5
-tmux set -g status-right "#[fg=#225500, bg=default,none,dim] $cpu_memory_status"
+tmux set -g status-right "#[fg=##4B4F53, bg=default,none,dim] 󰍛 $cpu_status #[fg=#225555,bg=default,none,dim] 󰍜 $memory_status"
