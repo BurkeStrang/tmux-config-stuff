@@ -45,8 +45,8 @@ cpu_status="#(bash $SCRIPTS_PATH/cpu.sh)"
 memory_status="#(bash $SCRIPTS_PATH/memory.sh)"
 
 # Half-diamond style glyphs (requires Powerline/Nerd Font)
-LEFT_HALF_DIAMOND="#[bg=default,none,dim,fg=#0A0A0A]"
-RIGHT_HALF_DIAMOND="#[bg=default,none,dim,fg=#0A0A0A]"
+LEFT_HALF_DIAMOND="#[bg=default,none,dim,fg=#011A1A]"
+RIGHT_HALF_DIAMOND="#[bg=default,none,dim,fg=#011A1A]"
 
 #+--- Bars LEFT ---+
 tmux set -g status-left "$LEFT_HALF_DIAMOND#[fg=##4B4F53,bg=#0A0A0A] #{?client_prefix,󰠠 ,#[dim]󰤂 }#[fg=##4B4F53,bg=#0A0A0A,nodim]#S $RESET"
