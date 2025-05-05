@@ -43,10 +43,11 @@ window_number="#($SCRIPTS_PATH/custom-number.sh #I $window_id_style)"
 custom_pane="#($SCRIPTS_PATH/custom-number.sh #P $pane_id_style)"
 cpu_status="#(bash $SCRIPTS_PATH/cpu.sh)"
 memory_status="#(bash $SCRIPTS_PATH/memory.sh)"
+time="#(bash $SCRIPTS_PATH/time.sh)"
 
 # Half-diamond style glyphs (requires Powerline/Nerd Font)
-LEFT_HALF_DIAMOND="#[bg=default,none,dim,fg=#011A1A]"
-RIGHT_HALF_DIAMOND="#[bg=default,none,dim,fg=#011A1A]"
+LEFT_HALF_DIAMOND="#[bg=default,none,dim,fg=#121212]"
+RIGHT_HALF_DIAMOND="#[bg=default,none,dim,fg=#121212]"
 
 #+--- Bars LEFT ---+
 tmux set -g status-left "$LEFT_HALF_DIAMOND#[fg=##4B4F53,bg=#0A0A0A] #{?client_prefix,󰠠 ,#[dim]󰤂 }#[fg=##4B4F53,bg=#0A0A0A,nodim]#S $RESET"
@@ -59,4 +60,4 @@ tmux set -g window-status-format "#[fg=#225555,bg=default,none,dim] $window_numb
 
 #+--- Bars RIGHT ---+
 tmux set -g status-interval 5
-tmux set -g status-right "#[fg=##4B4F53, bg=default,none,dim] 󰍛 $cpu_status #[fg=#225555,bg=default,none,dim] 󰍜 $memory_status"
+tmux set -g status-right "#[fg=##4B4F53, bg=default,none,dim] 󰍛 $cpu_status #[fg=#225555,bg=default,none,dim] 󰍜 $memory_status #[fg=#225555,bg=default,none,dim] 󰥔 $time"
